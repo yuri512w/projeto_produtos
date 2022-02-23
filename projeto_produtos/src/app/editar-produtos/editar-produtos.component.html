@@ -1,17 +1,20 @@
-<h5>Cadastro de Produtos</h5>
-<p>Preencha os campos para incluir um produto.</p>
-<hr/>
+<h5>Edição de Produtos</h5>
+<p>Utilize os campos para alterar os dados de um produto.</p>
+<hr />
  
-<form [formGroup]="formCadastro" (ngSubmit)="onSubmit()">
+<form [formGroup]="formEdicao" (ngSubmit)="onSubmit()">
  
     <div *ngIf="mensagem" class="mb-3 alert alert-primary">
         <strong>{{mensagem}}</strong>
     </div>
  
+    <!-- campo oculto -->
+    <input type="hidden" formControlName="idProduto" />
+ 
     <div class="row mb-3">
         <div class="col-md-6">
             <label>Nome do produto:</label>
-            <input type="text" class="form-control" formControlName="nome"/>
+            <input type="text" class="form-control" formControlName="nome" />
             <div class="text-danger" *ngIf="form.nome.touched && form.nome.invalid">
                 <span *ngIf="form.nome.errors.required">
                     Por favor, informe o nome do produto.
@@ -20,7 +23,7 @@
         </div>
         <div class="col-md-3">
             <label>Preço:</label>
-            <input type="text" class="form-control" formControlName="preco"/>
+            <input type="text" class="form-control" formControlName="preco" />
             <div class="text-danger" *ngIf="form.preco.touched && form.preco.invalid">
                 <span *ngIf="form.preco.errors.required">
                     Por favor, informe o preço do produto.
@@ -29,7 +32,7 @@
         </div>
         <div class="col-md-3">
             <label>Quantidade:</label>
-            <input type="text" class="form-control" formControlName="quantidade"/>
+            <input type="text" class="form-control" formControlName="quantidade" />
             <div class="text-danger" *ngIf="form.quantidade.touched && form.quantidade.invalid">
                 <span *ngIf="form.quantidade.errors.required">
                     Por favor, informe a quantidade do produto.
@@ -52,12 +55,10 @@
  
     <div class="row mb-3">
         <div class="col-md-12">
-            <input type="submit" [disabled]="!formCadastro.valid"
-                value="Realizar Cadastro" class="btn btn-success"/>
+            <input type="submit" [disabled]="!formEdicao.valid" value="Salvar Alterações" class="btn btn-primary" />
         </div>
     </div>
  
 </form>
- 
 
 

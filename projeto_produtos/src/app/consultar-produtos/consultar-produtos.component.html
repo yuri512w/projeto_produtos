@@ -16,14 +16,20 @@
     <tbody>
         <tr *ngFor="let p of produtos">
             <td>{{p.nome}}</td>
-            <td>{{p.preco | currency:'R$'}}</td>
+            <td>{{p.preco | currency: 'R$ '}}</td>
             <td>{{p.quantidade}}</td>
-            <td>{{p.total |  currency:'R$'}}</td>
+            <td>{{p.total | currency: 'R$ '}}</td>
             <td>{{p.descricao}}</td>
             <td>
-                <button class="btn btn-sm btn-primary">Editar</button>
+                <button class="btn btn-sm btn-primary"
+                    [routerLink]="['/editar-produtos', p.idProduto]">
+                    Editar
+                </button>
                 &nbsp;
-                <button class="btn btn-sm btn-danger">Excluir</button>
+                <button class="btn btn-sm btn-danger"
+                    (click)="excluir(p.idProduto)">
+                    Excluir
+                </button>
             </td>
         </tr>
     </tbody>
